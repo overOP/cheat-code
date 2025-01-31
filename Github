@@ -1,0 +1,15 @@
+Git init
+Git add . 
+Git commit -m ‘’my first commit’’
+Git push 
+
+
+If we need to add some thing 
+We uses all command 
+But we give the name of what we add in git 
+
+Like 
+
+Git add .
+Git commit -m ‘’ what we add ‘’  
+Git push  origin main 
