@@ -41,4 +41,8 @@ For node_modules{
             npm install -g nodemon
             npm install --save-dev nodemon
           }
-  Now not node (nodemon index.js)
+   We send to scripts 
+“dev”
+ (nodemon index.js)
+To run 
+(npm run dev)
