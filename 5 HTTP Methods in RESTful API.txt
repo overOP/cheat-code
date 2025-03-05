@@ -1,0 +1,18 @@
+In RESTful API development, the five primary HTTP methods are:
+
+GET – Retrieves data from the server. It is safe and idempotent, meaning it does not change the resource state.
+
+Example: GET /users/1 retrieves user details with ID 1.
+POST – Sends data to the server to create a new resource.
+
+Example: POST /users with a request body creates a new user.
+PUT – Updates or replaces an existing resource. It is idempotent.
+
+Example: PUT /users/1 updates the user with ID 1.
+PATCH – Partially updates an existing resource.
+
+Example: PATCH /users/1 with a request body updates specific fields of user 1.
+DELETE – Removes a resource from the server.
+
+Example: DELETE /users/1 deletes the user with ID 1.
+These methods help in building a structured and scalable RESTful API. 🚀
