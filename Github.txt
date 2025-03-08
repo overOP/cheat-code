@@ -3,7 +3,7 @@ Git add .
 Git commit -m ‘’my first commit’’
 Git push 
 
-to change -m
+to change branch
      Git checkout -b “name”
      And 
      Git add .
@@ -20,7 +20,7 @@ If we are using other code
 
 
 
-If we need to add some thing 
+If we need to add some thing
 We uses all command 
 But we give the name of what we add in git 
 
