@@ -3,6 +3,22 @@ Git add .
 Git commit -m ‘’my first commit’’
 Git push 
 
+to change -m
+     Git checkout -b “name”
+     And 
+     Git add .
+     Git commit -m ‘’ what we add ‘’   {   
+               fix : when we fix the bug ,  feat : the feature  ,  chore : update    tools }
+     Git push  origin main 
+
+To see the branch 
+        Git branch
+        Git checkout  “name”
+
+If we are using other code
+        Git clone And the link
+
+
 
 If we need to add some thing 
 We uses all command 
