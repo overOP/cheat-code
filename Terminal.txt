@@ -1,0 +1,156 @@
+Terminal  for MacBook
+
+To see what we downloaded
+    [ sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* ‘select LSQuarantineDataURLString from LSQuarantineEvent’ ]
+
+To clear what we downloaded
+     [ sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* ‘delete from LSQuarantineEvent’ ]
+
+For plain text to past
+     [ command options shift and V ]
+
+Taking screenshots 
+     [ command + shift + 3 ]
+To select just part 
+      [ command + shift + 4 ]
+Better
+     [ command + control + shift + 4 ]
+
+To wake up full-time
+     [ caffeinate  ]
+     [ to stop control C ]
+
+To launch 
+      Command and space bar
+
+To see the wifi password 
+       security find-generic-password -wa “the name of wifi” 
+                  (To copy  | pbcopy)
+
+To change password
+       [ password ]
+ 
+
+{linux commands 
+       
+ CD will change current working directory 
+        [ cd ~/where we want to go ]
+To back home
+        [ cd ]
+LS command will list all the files of folders directory
+        [ ls ]
+Print your working directory
+        [ pwd ]
+Who am I 
+        [ whoami ]
+We can move the files 
+        [ mv test ~/specifying our file/And where we wanna move it ]
+Copy files
+        [ cp hey ~/specifying our file/where we want to copy ]
+ditto
+        [ ditto hey ~/specifying our file/where we want to copy ]
+To see space in hard drive
+       [ df -h ]
+
+To start editing a file 
+       [ nano hey ]
+      To shave 
+       [ control + X + Y + enter ]
+
+Man
+       [ man nano ]
+And to quit
+       [ Q ]
+
+To see website is running
+       [ ping the name of website ]
+To stop 
+       [ control C ]
+To see IP address 
+       [ ifconfig ]
+Better
+       [ ifconfig en0 ]
+Which all owe to filter
+       [ ifconfig en0 | grep inet ]
+Even better
+       [ ifconfig en0 | grep inet | awk ‘ { print $2 }’ ]
+
+ To see the path through the internet 
+       [ traceroute the website name ]
+DNS of website
+      [ dig the website name ]
+
+To see the processes on the computer
+     [ ps ]
+More
+    [ ps -ax ]
+Which processes CPU 
+    [ top ]
+Filter by memory
+    [ top -o rsize ]
+
+To see the process id 
+     [ ps -ax | grep thisascript ]
+Kill a running process
+    [ kill -9 the process id ]
+}
+
+
+To use different types of shells
+     [ which $SHELL ]
+Switch to bash
+     [ bash ]
+To go back 
+      [ zsh ]
+We can find out with the uptime
+      [ uptime ]
+Flush DNS cash
+      [ sudo killall -HUP mDNSResponder; sudo killall mDNSResponderHelper; sudo decacheutil -flushcache ]
+
+
+To get quick preview 
+      [ qlmanage -p ~/folder/file name ]
+To compare two files
+      [ diff  And the two file names ]
+To download the files
+     [ curl  And URL > where we store ]
+Curl the weather 
+     [ curl  wttr.in/name ]
+History of command
+     [ history ]
+
+Brew 
+[Install Homebrew]
+1
+{Like a hack
+   [ brew install cmatrix ]
+   [ cmatrix ]
+To stop 
+   [ control C ]
+}
+2
+{fish
+[  brew install asciiquarium ]
+[ asciiquarium ]
+To stop 
+   [ control C ]
+}
+3 
+{
+[ brew install toilet ]
+[ toilet name ]
+4
+{game
+[ brew instal satay/tui/tetris ]
+[ tetris ]
+To stop 
+   [ control C ]
+}
+
+
+Python
+   [ python3 -m http.server ]
+In googl
+  [ localhost:8000 ]
+To stop 
+   [ control C ]
