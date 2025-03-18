@@ -1,0 +1,148 @@
+——————          1      ——————————————————————
+
+npm { npm init 
+         (package name: (server) pradeep
+          version: (1.0.0) 
+          description: 
+         entry point: (index.js) 
+         test command: 
+        git repository: 
+        keywords: 
+          author: over
+         license: (ISC) )
+At last (yes or y)
+           }                    
+     
+           For   shortcut         [ npm init -yes or y ]
+
+
+
+To restart firest (control c)
+Again
+node index.js
+
+———————       2         —————————————————-
+In package.json 
+
+         In   “scripts”:    {
+                        "dev": "nodemon index.js",
+                       "test": "echo \"Error: no test specified\" && exit 1"
+                     } 
+              
+ We send to scripts 
+“dev”
+ (nodemon index.js)
+To run 
+(npm run dev)
+
+
+
+———————         3        ———————————————————
+
+For node_modules{
+            npm install -g nodemon
+            npm install --save-dev nodemon
+          }
+
+
+———————        4        ———————————————————
+
+Express.js
+
+       npm install express --save
+
+———————      5      ————————————————————
+
+In Prisma     ORM
+
+Then, install the Prisma CLI as a development dependency in the project:
+
+      npm install prisma --save-dev
+
+     
+Finally, set up Prisma ORM with the init command of the Prisma CLI:
+
+        npx prisma init --datasource-provider sqlite
+
+
+It will make 
+ _______     1    ________
+
+Prisma file
+
+      In schema.prisam
+
+          We chang 
+
+               datasource db {
+                                 provider = "postgresql"
+                                 url      = env("DATABASE_URL")
+                             }
+(
+If we use no wifi
+                
+             datasource db {
+                                 provider = “mysql
+                                 url      = env("DATABASE_URL")
+                             }
+)
+And make table 
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String   
+  email     String   @unique
+  password  String
+  phone     String
+  address   String
+}
+
+_________      2      ____________
+
+And in 
+       .env
+             DATABASE_URL="postgresql://neondb_owner:npg_J8EzSt3kvpXO@ep-lingering-bread-a56pydfd-pooler.us-east-2.aws.neon.tech/DB?sslmode=require"
+
+(
+If we use no wifi
+
+              DATABASE_URL="mysql://root:@localhost:3306/name”
+
+)
+
+————————        6        ———————————————————
+
+Run a migration
+ 
+
+    npx prisma migrate dev --name init
+
+
+———————        7      ————————————————————
+
+npx prisma generate
+
+
+——————        8      ———————————————————
+
+
+Make a file 
+       config
+             Prisma.js
+   
+           const {PrismaClient}  =   require(“@prisma/client”)
+           const prisma  =  new PrismaClient();  
+        
+——————  export ————————
+          Module.exports =  prisma;
+————  index.js —————————
+Const express = require(‘express’)
+Const app = express();
+
+Const prisma = require(‘./config/prisma’)
+
+             
+
+[In index.js 
+     Const {PrismaClient}  =   require(“@prisma/client”)
+     const prisma  =  new PrismaClient();     ]
