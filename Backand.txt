@@ -109,6 +109,19 @@ If we use no wifi
               DATABASE_URL="mysql://root:@localhost:3306/name”
 
 )
+———————————————————————————————
+
+const express = require("express");
+const app = express();
+
+
+
+
+
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
+
 
 ————————        6        ———————————————————
 
