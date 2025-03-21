@@ -1,3 +1,34 @@
+——————————       Relation         ——————————————
+                                     
+[ Command s ]
+
+    To Connect model 
+Model user
+
+Posts poost [ ]
+
+Model post 
+
+User user? @relation(fields: [userID], reference: [id] )
+userID int?
+
+
+———————————  If we add field  ————————————
+
+   npc prisma migrate dev --name added_job_title
+
+[   npx prisma migrate dev --name added_What we add ]
+
+Also 
+
+npx prisma generate
+
+
+———— TO see in server ————————————
+
+npx prisma studio
+
+
 ——————          1      ——————————————————————
 
 npm { npm init 
@@ -109,6 +140,8 @@ If we use no wifi
               DATABASE_URL="mysql://root:@localhost:3306/name”
 
 )
+
+
 ———————————————————————————————
 
 const express = require("express");
@@ -143,8 +176,8 @@ Make a file
        config
              Prisma.js
    
-           const {PrismaClient}  =   require(“@prisma/client”)
-           const prisma  =  new PrismaClient();  
+           const {PrismaClient} = require(“@prisma/client”)
+           const prisma = new PrismaClient();  
         
 ——————  export ————————
           Module.exports =  prisma;
