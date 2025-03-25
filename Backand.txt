@@ -12,6 +12,42 @@ Model post
 User user? @relation(fields: [userID], reference: [id] )
 userID int?
 
+——————————  bcrypt - hash  ————————————
+ npm i bcrypt
+—————————    jsonwebtoken - generate token —————-
+ npm i jsonwebtoken
+
+—————————  dotenv - password ———————————
+npm i dotenv
+————————  to Upload img —————————————
+
+npm install --save multer
+
+————————————————————————————
+                   We make tow file
+1.Middleware
+           Upload.js
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+                 // Storage folder
+      cb(null, './Storage')
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+      cb(null, uniqueSuffix + '-' + file.originalname)
+    }
+  })
+  
+  const upload = multer({ storage: storage })
+
+  module.exports = upload;
+
+
+         AND
+2.Storage
+
 
 ———————————  If we add field  ————————————
 
