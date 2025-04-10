@@ -1,3 +1,20 @@
+
+touch index.js   [for index ]
+
+
+mkdir peadeep   [for file ]
+
+ls [to see file ]
+
+rmdir the file name [to remove file ]
+
+(To see the v of node) node -v
+
+nvm { (to see the v)            nvm -v
+           (to see the list)        nvm list 
+          (to install v )             nvm install (the v number)
+          (to use old v)            nvm use (the v number)
+         }
 ——————————       Relation         ——————————————
                                      
 [ Command s ]
@@ -12,62 +29,12 @@ Model post
 User user? @relation(fields: [userID], reference: [id] )
 userID int?
 
-——————————  bcrypt - hash  ————————————
- npm i bcrypt
-—————————    jsonwebtoken - generate token —————-
- npm i jsonwebtoken
 
-—————————  dotenv - password ———————————
-npm i dotenv
-————————  to Upload img —————————————
-
-npm install --save multer
-
-————————————————————————————
-                   We make tow file
-1.Middleware
-           Upload.js
-const multer = require('multer');
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-                 // Storage folder
-      cb(null, './Storage')
-    },
-    filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-      cb(null, uniqueSuffix + '-' + file.originalname)
-    }
-  })
-  
-  const upload = multer({ storage: storage })
-
-  module.exports = upload;
-
-
-         AND
-2.Storage
-
-
-———————————  If we add field  ————————————
-
-   npc prisma migrate dev --name added_job_title
-
-[   npx prisma migrate dev --name added_What we add ]
-
-Also 
-
-npx prisma generate
-
-
-———— TO see in server ————————————
-
-npx prisma studio
 
 
 ——————          1      ——————————————————————
 
-npm { npm init 
+npm { npm init -y
          (package name: (server) pradeep
           version: (1.0.0) 
           description: 
@@ -156,15 +123,32 @@ If we use no wifi
 And make table 
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String   
-  email     String   @unique
-  password  String
-  phone     String
-  address   String
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  name     String
+  password String
+  phone    String
+  address  String?
+
+//posts 
+  posts    Post[]  
 }
 
+model Post {
+  id       Int    @id @default(autoincrement())
+  title    String @unique
+  descrption     String
+  imageUrl   String
+
+  //user
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+
 _________      2      ____________
+We make new connect 
+    In Neon Console
 
 And in 
        .env
@@ -179,6 +163,8 @@ If we use no wifi
 
 
 ———————————————————————————————
+Make a index.js
+
 
 const express = require("express");
 const app = express();
@@ -212,11 +198,122 @@ Make a file
        config
              Prisma.js
    
-           const {PrismaClient} = require(“@prisma/client”)
-           const prisma = new PrismaClient();  
-        
-——————  export ————————
-          Module.exports =  prisma;
+const {PrismaClient}  = require("@prisma/client")
+const prisma = new PrismaClient();
+//Error handling
+prisma.$connect().then(
+    (value) => {
+    console.log("Connected to database")
+}).catch((err) => {
+    console.error(err);
+})
+
+module.exports = prisma;
+
+—————————— 9 ——————————————————
+Make a routes file
+
+         postRoutes.js
+const express = require('express')
+const router = express.Router()
+
+module.exports = router
+
+        userRoutes.js
+const express = require('express')
+const router = express.Router()
+
+module.exports = router
+
+—————————  10 ——————————————————
+——————————  bcrypt - hash  ————————————
+npm i bcrypt
+—————————    jsonwebtoken - generate token —————-
+npm i jsonwebtoken
+
+—————————  dotenv - password ———————————
+npm i dotenv
+————————  to Upload img —————————————
+
+npm install --save multer
+
+————————————————————————————
+                   We make tow file
+1.Middleware
+           Upload.js
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+                 // Storage folder
+      cb(null, './Storage')
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+      cb(null, uniqueSuffix + '-' + file.originalname)
+     //cd is callback
+    }
+  })
+  
+  const upload = multer({ storage: storage })
+
+  module.exports = upload;
+
+     Also ——————————————————————————
+             authCheck.js
+
+const jwt = require('jsonwebtoken');
+
+//authCheck is used to check if the user is authenticated to access the route
+const authCheck = async (req, res, next) => {
+    try {
+        const token = req.headers.authorization;
+        if (!token) {
+            return res.status(401).json({ 
+                message: 'Unauthorized',
+                error: 'No token provided'
+            });
+        }
+  
+        const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+        if (!decoded) {
+            return res.status(401).json({ 
+                message: 'Unauthorized',
+                error: 'Invalid token'
+            });
+        }
+        req.user = decoded;
+        next();
+    } catch (error) {
+        return res.status(401).json({ 
+            message: 'Unauthorized',
+            error: error.message
+        });
+    }
+}
+
+module.exports = authCheck;
+
+
+         AND
+2.Storage
+
+
+———————————  If we add field  ————————————
+
+   npc prisma migrate dev --name added_job_title
+
+[   npx prisma migrate dev --name added_What we add ]
+
+Also 
+
+npx prisma generate
+
+
+———— TO see in server ————————————
+
+npx prisma studio
+
 ————  index.js —————————
 Const express = require(‘express’)
 Const app = express();
@@ -228,3 +325,5 @@ Const prisma = require(‘./config/prisma’)
 [In index.js 
      Const {PrismaClient}  =   require(“@prisma/client”)
      const prisma  =  new PrismaClient();     ]
+
+
