@@ -1,0 +1,27 @@
+———————— Recat——————————
+Clear
+                To make files
+pwd
+
+cd Documents
+
+npm create vite@latest
+
+◇  Project name:
+│  vite-project                    we always give the name like
+│
+◇  Select a framework:
+│  React
+│
+◇  Select a variant:
+│  JavaScript
+
+
+
+                       Now run
+
+cd vite-project
+npm install
+npm run build
+npm run dev 
+
